@@ -161,4 +161,122 @@ public class UserDB {
         }
         return isexist;
     }
+
+    public boolean vaildStudent(String email, String pwd) {
+        Connection cnnct = null;
+        PreparedStatement pstmnt = null;
+        boolean isvaild = false;
+        try {
+            cnnct = getConnection();
+            String preQueryStatement = "SELECT Password FROM Student WHERE email=?";
+            pstmnt = cnnct.prepareStatement(preQueryStatement);
+            pstmnt.setString(1, email);
+            ResultSet rs = null;
+            rs = pstmnt.executeQuery();
+            while (rs.next()) {
+                if (rs.getString(0).equals(pwd)) {
+                    isvaild = true;
+                }
+            }
+            pstmnt.close();
+            cnnct.close();
+        } catch (SQLException ex) {
+            while (ex != null) {
+                ex.printStackTrace();
+                ex = ex.getNextException();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return isvaild;
+
+    }
+
+    public boolean vaildTeacher(String email, String pwd) {
+        Connection cnnct = null;
+        PreparedStatement pstmnt = null;
+        boolean isvaild = false;
+        try {
+            cnnct = getConnection();
+            String preQueryStatement = "SELECT Password FROM Teacher WHERE email=?";
+            pstmnt = cnnct.prepareStatement(preQueryStatement);
+            pstmnt.setString(1, email);
+            ResultSet rs = null;
+            rs = pstmnt.executeQuery();
+            while (rs.next()) {
+                if (rs.getString(0).equals(pwd)) {
+                    isvaild = true;
+                }
+            }
+            pstmnt.close();
+            cnnct.close();
+        } catch (SQLException ex) {
+            while (ex != null) {
+                ex.printStackTrace();
+                ex = ex.getNextException();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return isvaild;
+
+    }
+
+    public ArrayList queryStuByEmail(String email) {
+        Connection cnnct = null;
+        PreparedStatement pstmnt = null;
+        StudentBean student = null;
+        ArrayList<StudentBean> students = new ArrayList();
+        try {
+            cnnct = getConnection();
+            String preQueryStatement = "SELECT * FROM Student WHERE email=?";
+            pstmnt = cnnct.prepareStatement(preQueryStatement);
+            pstmnt.setString(1, email);
+            ResultSet rs = null;
+            rs = pstmnt.executeQuery();
+            while (rs.next()) {
+                student = new StudentBean(rs.getInt("StudentID"), rs.getString("Email"), rs.getString("Password"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("DateOfBirth"), rs.getString("Gender"), rs.getString("SelfIntro"), rs.getString("Icon"), rs.getInt("Credit"), rs.getString("Ispremiunm"));
+                students.add(student);
+            }
+            pstmnt.close();
+            cnnct.close();
+        } catch (SQLException ex) {
+            while (ex != null) {
+                ex.printStackTrace();
+                ex = ex.getNextException();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return students;
+    }
+
+    public ArrayList queryTeaByEmail(String email) {
+        Connection cnnct = null;
+        PreparedStatement pstmnt = null;
+        TeacherBean Teacher = null;
+        ArrayList<TeacherBean> Teachers = new ArrayList();
+        try {
+            cnnct = getConnection();
+            String preQueryStatement = "SELECT * FROM Student WHERE email=?";
+            pstmnt = cnnct.prepareStatement(preQueryStatement);
+            pstmnt.setString(1, email);
+            ResultSet rs = null;
+            rs = pstmnt.executeQuery();
+            while (rs.next()) {
+                Teacher = new TeacherBean(rs.getInt("TeacherID"), rs.getString("Email"), rs.getString("Password"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("DateOfBirth"), rs.getString("Gender"), rs.getString("SelfIntro"), rs.getString("Icon"));
+                Teachers.add(Teacher);
+            }
+            pstmnt.close();
+            cnnct.close();
+        } catch (SQLException ex) {
+            while (ex != null) {
+                ex.printStackTrace();
+                ex = ex.getNextException();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return Teachers;
+    }
 }
