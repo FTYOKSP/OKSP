@@ -66,42 +66,6 @@ public class UserDB {
         return test;
     }
     
-        public String test2() {
-        String test = "";
-        Connection cnnct = null;
-        PreparedStatement pStmnt = null;
-        boolean isSuccess = false;
-        try {
-            cnnct = getConnection();
 
-            String preQueryStatement = "select * from student";
-            pStmnt = cnnct.prepareStatement(preQueryStatement);
-
-            ResultSet rs = null;
-            rs = pStmnt.executeQuery();
-            while (rs.next()) {
-                test += rs.getString("Email");
-                isSuccess = true;
-            }
-
-            System.out.println(isSuccess);
-
-            pStmnt.close();
-            cnnct.close();
-
-        } catch (SQLException ex) {
-            while (ex != null) {
-
-                ex.printStackTrace();
-                ex = ex.getNextException();
-
-            }
-        } catch (IOException ex) {
-
-            ex.printStackTrace();
-
-        }
-        return test;
-    }
 
 }
