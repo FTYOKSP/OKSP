@@ -20,16 +20,16 @@ public class StudentBean implements Serializable {
     private String Fname;
     private String lname;
     private String dob;
-    private char gender;
+    private String gender;
     private String SelfIntro;
     private String Icon;
     private int Credit;
-    private char Ispremium;
+    private String Ispremium;
 
     public StudentBean() {
     }
 
-    public StudentBean(int StudentID, String Email, String pwd, String Fname, String lname, String dob, char gender, String SelfIntro, String Icon, int Credit, char Ispremium) {
+    public StudentBean(int StudentID, String Email, String pwd, String Fname, String lname, String dob, String gender, String SelfIntro, String Icon, int Credit, String Ispremium) {
         this.StudentID = StudentID;
         this.Email = Email;
         this.pwd = pwd;
@@ -67,7 +67,7 @@ public class StudentBean implements Serializable {
         this.dob = dob;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -83,7 +83,7 @@ public class StudentBean implements Serializable {
         this.Credit = Credit;
     }
 
-    public void setIspremium(char Ispremium) {
+    public void setIspremium(String Ispremium) {
         this.Ispremium = Ispremium;
     }
 
@@ -111,7 +111,7 @@ public class StudentBean implements Serializable {
         return dob;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
@@ -127,7 +127,7 @@ public class StudentBean implements Serializable {
         return Credit;
     }
 
-    public char getIspremium() {
+    public String getIspremium() {
         return Ispremium;
     }
 
