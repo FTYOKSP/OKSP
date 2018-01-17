@@ -5,6 +5,9 @@
  */
 package ict.servlet;
 
+import ict.bean.StudentBean;
+import ict.bean.TeacherBean;
+import ict.db.UserDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,15 +37,41 @@ public class RegisterController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegisterController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegisterController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String role = request.getParameter("role");
+            String fname = request.getParameter("fname");
+            String lname = request.getParameter("lname");
+            String pwd = request.getParameter("pwd");
+            String email = request.getParameter("email");
+            UserDB db=new UserDB();
+            
+            if (role.equals("student")) {
+                StudentBean student = new StudentBean();
+                student.setFname(fname);
+                student.setFname(lname);
+                student.setEmail(email);
+                student.setPwd(pwd);
+                student.setIcon("initFemale");
+                student.setGender('U');
+                student.setDob("2018-1-1");
+                student.setCredit(0);
+                student.setIspremium('N');
+                db.addStudentFullRecord(student);
+                response.sendRedirect("index.jsp");
+            } else {
+                if (role.equals("teacher")) {
+                    TeacherBean teacher = new TeacherBean();
+                    teacher.setFname(fname);
+                    teacher.setFname(lname);
+                    teacher.setEmail(email);
+                    teacher.setPwd(pwd);
+                    teacher.setIcon("initFemale");
+                    teacher.setGender('U');
+                    teacher.setDob("2018-1-1");
+                    db.addTeacherFullRecord(teacher);
+                    response.sendRedirect("index.jsp");
+                }
+            }
+
         }
     }
 

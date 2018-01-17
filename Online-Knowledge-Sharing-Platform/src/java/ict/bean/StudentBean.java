@@ -19,7 +19,7 @@ public class StudentBean implements Serializable {
     private String pwd;
     private String Fname;
     private String lname;
-    private Date dob;
+    private String dob;
     private char gender;
     private String SelfIntro;
     private String Icon;
@@ -29,7 +29,7 @@ public class StudentBean implements Serializable {
     public StudentBean() {
     }
 
-    public StudentBean(int StudentID, String Email, String pwd, String Fname, String lname, Date dob, char gender, String SelfIntro, String Icon, int Credit, char Ispremium) {
+    public StudentBean(int StudentID, String Email, String pwd, String Fname, String lname, String dob, char gender, String SelfIntro, String Icon, int Credit, char Ispremium) {
         this.StudentID = StudentID;
         this.Email = Email;
         this.pwd = pwd;
@@ -63,7 +63,7 @@ public class StudentBean implements Serializable {
         this.lname = lname;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -107,7 +107,7 @@ public class StudentBean implements Serializable {
         return lname;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 

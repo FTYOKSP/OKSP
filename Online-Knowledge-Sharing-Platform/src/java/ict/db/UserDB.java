@@ -43,7 +43,7 @@ public class UserDB {
             pstmnt.setString(2, Teacher.getPwd());
             pstmnt.setString(3, Teacher.getFname());
             pstmnt.setString(4, Teacher.getLname());
-            pstmnt.setDate(5, Teacher.getDob());
+            pstmnt.setString(5, Teacher.getDob());
             pstmnt.setObject(6, Teacher.getGender());
             pstmnt.setString(7, Teacher.getSelfIntro());
             pstmnt.setString(8, Teacher.getIcon());
@@ -77,7 +77,7 @@ public class UserDB {
             pstmnt.setString(2, Student.getPwd());
             pstmnt.setString(3, Student.getFname());
             pstmnt.setString(4, Student.getLname());
-            pstmnt.setDate(5, Student.getDob());
+            pstmnt.setString(5, Student.getDob());
             pstmnt.setObject(6, Student.getGender());
             pstmnt.setString(7, Student.getSelfIntro());
             pstmnt.setString(8, Student.getIcon());

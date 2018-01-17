@@ -34,12 +34,12 @@
         </nav>
         <div class="cont" style="margin-top: 100px">
             <div class="form sign-in">
-                <form action="LoginController" method="post" class="container" id="needs-validation1" novalidate>
+                <form action="Login" method="post" class="container" id="needs-validation1" novalidate>
                     <h2>Login Account</h2>
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label><span>Email address</span></label>
-                            <input type="email" class="form-control" name="Email1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
                             <div class="invalid-feedback">
                                 Please provide a valid Email address.
                             </div>
@@ -73,17 +73,17 @@
                         <span class="m--in">Login</span>
                     </div>
                 </div>
-                <form action="RegisterController" method="post" class="container" id="needs-validation2" novalidate>
+                <form action="Register" method="post" class="container" id="needs-validation2" novalidate>
                     <div class="form sign-up">
                         <h2>Registration</h2>
                         <div class="row">
                             <label class="custom-control custom-radio">
-                                <input id="radio1" name="radio" type="radio" class="custom-control-input" required>
+                                <input id="radio1" name="role" type="radio" class="custom-control-input" value="student" required>
                                 <span class="custom-control-indicator"></span>
                                 <span class="custom-control-description" style="color: #12CCB1;">Student Account</span>
                             </label>
                             <label class="custom-control custom-radio">
-                                <input id="radio2" name="radio" type="radio" class="custom-control-input">
+                                <input id="radio2" name="role" type="radio" class="custom-control-input" value="teacher">
                                 <span class="custom-control-indicator"></span>
                                 <span class="custom-control-description" style="color: #12CCB1;">Teacher Account</span>
                             </label>
@@ -116,7 +116,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label><span>Email address</span></label>
-                                <input type="email" class="form-control" name="Email1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
                                 <div class="invalid-feedback">
                                     Please provide a valid Email address.
                                 </div>

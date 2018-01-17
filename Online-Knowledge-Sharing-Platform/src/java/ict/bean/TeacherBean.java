@@ -19,7 +19,7 @@ public class TeacherBean implements Serializable{
     private String pwd;
     private String Fname;
     private String lname;
-    private Date dob;
+    private String dob;
     private char gender;
     private String SelfIntro;
     private String Icon;
@@ -27,7 +27,7 @@ public class TeacherBean implements Serializable{
     public TeacherBean() {
     }
 
-    public TeacherBean(int TeacherID, String Email, String pwd, String Fname, String lname, Date dob, char gender, String SelfIntro, String Icon) {
+    public TeacherBean(int TeacherID, String Email, String pwd, String Fname, String lname, String dob, char gender, String SelfIntro, String Icon) {
         this.TeacherID = TeacherID;
         this.Email = Email;
         this.pwd = pwd;
@@ -59,7 +59,7 @@ public class TeacherBean implements Serializable{
         this.lname = lname;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -95,7 +95,7 @@ public class TeacherBean implements Serializable{
         return lname;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
