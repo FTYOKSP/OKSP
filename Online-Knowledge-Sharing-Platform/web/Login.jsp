@@ -33,6 +33,13 @@
             </div>
         </nav>
         <div class="cont" style="margin-top: 100px">
+            <%
+                if (request.getAttribute("error") != null) {
+                    String error = (String) request.getAttribute("error");
+                    out.print(error);
+                }
+
+            %>
             <div class="form sign-in">
                 <form action="Login" method="post" class="container" id="needs-validation1" novalidate>
                     <h2>Login Account</h2>
@@ -46,13 +53,13 @@
                         </div>
                     </div>
                     <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label><span>Password</span></label>
-                                <input type="password" class="form-control" name="pwd" placeholder="Enter Password" pattern="[A-Za-z0-9]{8}" required>
-                                <div class="invalid-feedback">
-                                    Please provide a valid Password Password with 8 character.
-                                </div>
+                        <div class="col-md-12 mb-3">
+                            <label><span>Password</span></label>
+                            <input type="password" class="form-control" name="pwd" placeholder="Enter Password" pattern="[A-Za-z0-9]{8}" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid Password Password with 8 character.
                             </div>
+                        </div>
                     </div>
                     <!-- <button type="button" class="submit"  id ="login"onclick="validate()">login</button>-->
                     <button type="sumbit" class="submit" id ="login">login</button>
@@ -150,7 +157,7 @@
                         form.classList.add('was-validated');
                     }, false);
                 }, false);
-                
+
                 window.addEventListener('load', function () {
                     var form = document.getElementById('needs-validation2');
                     form.addEventListener('submit', function (event) {

@@ -20,14 +20,14 @@ public class TeacherBean implements Serializable{
     private String Fname;
     private String lname;
     private String dob;
-    private char gender;
+    private String gender;
     private String SelfIntro;
     private String Icon;
     
     public TeacherBean() {
     }
 
-    public TeacherBean(int TeacherID, String Email, String pwd, String Fname, String lname, String dob, char gender, String SelfIntro, String Icon) {
+    public TeacherBean(int TeacherID, String Email, String pwd, String Fname, String lname, String dob, String gender, String SelfIntro, String Icon) {
         this.TeacherID = TeacherID;
         this.Email = Email;
         this.pwd = pwd;
@@ -63,7 +63,7 @@ public class TeacherBean implements Serializable{
         this.dob = dob;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -99,7 +99,7 @@ public class TeacherBean implements Serializable{
         return dob;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 

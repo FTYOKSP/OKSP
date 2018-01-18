@@ -5,13 +5,16 @@
  */
 package ict.servlet;
 
+import ict.db.UserDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,7 +37,24 @@ public class LoginController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+            String pwd = request.getParameter("pwd");
+            String email = request.getParameter("email");
+            UserDB db = new UserDB();
+            HttpSession session = request.getSession();
+            if (db.vaildStudent(email, pwd)) {
+                session.setAttribute("user", db.queryStuByEmail(email).get(0));
+                response.sendRedirect("index.jsp");
+            } else {
+                if (db.vaildTeacher(email, pwd)) {
+                    session.setAttribute("user", db.queryTeaByEmail(email).get(0));
+                    response.sendRedirect("index.jsp");
+                } else {
+                    request.setAttribute("error", "No Such User, please try again");
+                    RequestDispatcher rd;
+                    rd = getServletContext().getRequestDispatcher("/Login.jsp");
+                    rd.forward(request, response);
+                }
+            }
         }
     }
 

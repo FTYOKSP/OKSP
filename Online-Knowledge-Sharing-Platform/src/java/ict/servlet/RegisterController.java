@@ -47,25 +47,25 @@ public class RegisterController extends HttpServlet {
             if (role.equals("student")) {
                 StudentBean student = new StudentBean();
                 student.setFname(fname);
-                student.setFname(lname);
+                student.setLname(lname);
                 student.setEmail(email);
                 student.setPwd(pwd);
                 student.setIcon("initFemale");
-                student.setGender('U');
+                student.setGender("M");
                 student.setDob("2018-1-1");
                 student.setCredit(0);
-                student.setIspremium('N');
+                student.setIspremium("N");
                 db.addStudentFullRecord(student);
                 response.sendRedirect("index.jsp");
             } else {
                 if (role.equals("teacher")) {
                     TeacherBean teacher = new TeacherBean();
                     teacher.setFname(fname);
-                    teacher.setFname(lname);
+                    teacher.setLname(lname);
                     teacher.setEmail(email);
                     teacher.setPwd(pwd);
                     teacher.setIcon("initFemale");
-                    teacher.setGender('U');
+                    teacher.setGender("M");
                     teacher.setDob("2018-1-1");
                     db.addTeacherFullRecord(teacher);
                     response.sendRedirect("index.jsp");

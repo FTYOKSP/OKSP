@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class UserDB {
 
-    private String url = "jdbc:mysql://localhost:3306/oksp?zeroDateTimeBehavior=convertToNull";
+    private String url = "jdbc:mysql://localhost:3307/OKSP?zeroDateTimeBehavior=convertToNull&useSSL=false";
     private String username = "root";
     private String password = "root";
 
@@ -168,13 +168,13 @@ public class UserDB {
         boolean isvaild = false;
         try {
             cnnct = getConnection();
-            String preQueryStatement = "SELECT Password FROM Student WHERE email=?";
+            String preQueryStatement = "SELECT Password FROM Student WHERE Email=?";
             pstmnt = cnnct.prepareStatement(preQueryStatement);
             pstmnt.setString(1, email);
             ResultSet rs = null;
             rs = pstmnt.executeQuery();
             while (rs.next()) {
-                if (rs.getString(0).equals(pwd)) {
+                if (rs.getString("Password").equals(pwd)) {
                     isvaild = true;
                 }
             }
@@ -198,13 +198,13 @@ public class UserDB {
         boolean isvaild = false;
         try {
             cnnct = getConnection();
-            String preQueryStatement = "SELECT Password FROM Teacher WHERE email=?";
+            String preQueryStatement = "SELECT Password FROM Teacher WHERE Email=?";
             pstmnt = cnnct.prepareStatement(preQueryStatement);
             pstmnt.setString(1, email);
             ResultSet rs = null;
             rs = pstmnt.executeQuery();
             while (rs.next()) {
-                if (rs.getString(0).equals(pwd)) {
+                if (rs.getString("Password").equals(pwd)) {
                     isvaild = true;
                 }
             }
@@ -229,13 +229,13 @@ public class UserDB {
         ArrayList<StudentBean> students = new ArrayList();
         try {
             cnnct = getConnection();
-            String preQueryStatement = "SELECT * FROM Student WHERE email=?";
+            String preQueryStatement = "SELECT * FROM Student WHERE Email=?";
             pstmnt = cnnct.prepareStatement(preQueryStatement);
             pstmnt.setString(1, email);
             ResultSet rs = null;
             rs = pstmnt.executeQuery();
             while (rs.next()) {
-                student = new StudentBean(rs.getInt("StudentID"), rs.getString("Email"), rs.getString("Password"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("DateOfBirth"), rs.getString("Gender"), rs.getString("SelfIntro"), rs.getString("Icon"), rs.getInt("Credit"), rs.getString("Ispremiunm"));
+                student = new StudentBean(rs.getInt("StudentID"), rs.getString("Email"), rs.getString("Password"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("DateOfBirth"), rs.getString("Gender"), rs.getString("SelfIntro"), rs.getString("Icon"), rs.getInt("Credit"), rs.getString("Ispremium"));
                 students.add(student);
             }
             pstmnt.close();
